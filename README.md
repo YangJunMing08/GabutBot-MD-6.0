@@ -10,6 +10,8 @@ Update:
 ✅ Updated menu
 ✅ Connectnya pakai bahasa Indonesia
 ✅ Added fitur remini (Prem only) 
+✅ More stable (fitur welcome dimatikan di index (bisa dihidupkan lagi))
+✅ Bug fixes dll.
 
 Last Updated Version: GabutBot-MD v6.0
 
@@ -77,7 +79,7 @@ $ node .
 7. Selesai (lihat known issues di bawah)
 
 
-## Installing
+## Execute bot
 ```bash
 $ node .
 ```
@@ -145,6 +147,28 @@ $ node .
 |       ✅        |  Speech to text    |
 
 ... and more! Menfess, fun menu ready 
+
+## Known Issues
+1. Ketika run di panel, ketemu tulisan "can't find ffmpeg"
+   
+   Ganti path di file index.js (./node_modules/@ffmpeg-installer/index.js) di line 18, tambahkan path 'ffmpeg' disana!
+   
+   Sebelum:
+   ```bash
+   var topLevelPath = path.resolve(__dirname.substr(0, __dirname.indexOf('node_modules')), 'node_modules', '@ffmpeg-installer', platform);
+   ```
+   Sesudah:
+   ```bash
+   var topLevelPath = path.resolve(__dirname.substr(0, __dirname.indexOf('node_modules')), 'node_modules', '@ffmpeg-installer', 'ffmpeg', platform);
+   ```
+
+   Kemudian download file fix [`disini`](https://www.mediafire.com/file/sbc6bafga5x5l7g/fix-bot.zip/file), ekstrak foldernya dan kemudian letakkan di 
+   ./node_modules/@ffmpeg-installer/ffmpeg
+
+
+3. Ketika menggunakan command seperti sticker, smeme dll, ada error EACCES ketika execute ffmpeg
+   
+   Pada file ffmpeg di ./node_modules/@ffmpeg-installer/ffmpeg, klik titik tiga di sebelah kanan dan klik Permissions, setting permissionsnya ke 777.
 
 ## ❗ Warning
 WhatsApp Bot is still in the development stage, so there are a few bugs
